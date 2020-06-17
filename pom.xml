@@ -6,10 +6,15 @@
     <groupId>org.example</groupId>
     <artifactId>springclound-alibaba</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>inner-intergration</module>
+        <module>test-untitled</module>
+    </modules>
     <packaging>pom</packaging>
 
     <properties>
         <java.version>1.8</java.version>
+        <core.version>1.0-SNAPSHOT</core.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <spring-platform.version>Cairo-SR3</spring-platform.version>
         <spring-cloud-dependencies.version>Hoxton.SR2</spring-cloud-dependencies.version>
@@ -61,6 +66,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!--分布式基础组件-->
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>redis-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
