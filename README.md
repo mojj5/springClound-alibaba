@@ -1,5 +1,5 @@
 # springClound-alibaba
-基于springClound-alibaba搭建的微服务项目
+基于springClound-alibaba搭建的微服务项目架构
 ## 项目结构
  springClound-alibaba  <br/> 
  │  
