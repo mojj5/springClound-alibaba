@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+import java.util.HashMap;
+
 @RestController
 public class TestController {
 
@@ -15,8 +18,17 @@ public class TestController {
     @RequestMapping("/")
     public Object test(){
 
-        redisUtils.setValue("test", "test world !");
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+        objectObjectHashMap.put("ket",01);
+        objectObjectHashMap.put("version", 10);
+        objectObjectHashMap.put("date", new Date());
+        redisUtils.setValue("test", objectObjectHashMap);
+        Object test = redisUtils.getValue("test");
+        HashMap test1 = (HashMap) test;
+        System.out.println(test1.get("ket"));
 
-        return "test";
+        long test2 = redisUtils.getExpireTime("tests");
+        System.out.println(test2);
+        return test;
     }
 }
