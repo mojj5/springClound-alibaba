@@ -10,6 +10,7 @@
         <module>inner-intergration</module>
         <module>test-untitled</module>
         <module>api-gateway</module>
+        <module>oauth-center</module>
     </modules>
     <packaging>pom</packaging>
 
