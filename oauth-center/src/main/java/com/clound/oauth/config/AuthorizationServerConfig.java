@@ -26,14 +26,22 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
     /**
      * 对应于配置AuthorizationServer安全认证的相关信息，创建ClientCredentialsTokenEndpointFilter核心过滤器
      */
+    /**
+     * checkTokenAccess 权限设置为isAuthenticated，不然资源服务器 来请求403
+     * @param oauthServer
+     */
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        super.configure(security);
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
+        oauthServer
+                .allowFormAuthenticationForClients()
+                .checkTokenAccess("isAuthenticated()");
     }
 
     /**
      * 配置应用名称 应用id
      * 配置OAuth2的客户端相关信息
+     * POST
+     * "Content-Type: application/x-www-form-urlencoded"
      * http://appid:secret@localhost:port/oauth/token
      * grant_type
      * username

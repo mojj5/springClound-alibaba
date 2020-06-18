@@ -15,6 +15,7 @@
         <module>redis-test-untitled</module>
         <module>consumer-untitled</module>
         <module>rocketmq-produce-untitled</module>
+        <module>aouth2-test-untitled</module>
     </modules>
 
 
