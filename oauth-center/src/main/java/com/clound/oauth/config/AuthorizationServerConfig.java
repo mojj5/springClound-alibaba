@@ -52,6 +52,8 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
      * username
      * password
      * scope
+     *
+     * 授权码：http://localhost:7999/oauth/authorize?client_id=appid&response_type=code&redirect_uri=http://www.baidu.com
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -61,8 +63,9 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
                 .authorizedGrantTypes("password", "authorization_code", "client_credentials", "implicit", "refresh_token")
                 .scopes("all")
                 .resourceIds("oauth2-resource")
+                .redirectUris("http://www.baidu.com")
                 .accessTokenValiditySeconds(1200)
-                .refreshTokenValiditySeconds(50000);;
+                .refreshTokenValiditySeconds(50000);
     }
 
 

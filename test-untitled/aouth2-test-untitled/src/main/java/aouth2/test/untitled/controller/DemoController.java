@@ -11,4 +11,5 @@ public class DemoController {
     public Authentication authentication(Authentication authentication) {
         return authentication;
     }
+
 }
