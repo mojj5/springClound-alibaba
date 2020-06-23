@@ -11,6 +11,7 @@
         <module>test-untitled</module>
         <module>api-gateway</module>
         <module>oauth-center</module>
+        <module>web-portal</module>
     </modules>
     <packaging>pom</packaging>
 
