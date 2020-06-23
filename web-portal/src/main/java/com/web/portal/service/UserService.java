@@ -1,6 +1,5 @@
 package com.web.portal.service;
 
-import com.web.portal.model.OauthPassModel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
