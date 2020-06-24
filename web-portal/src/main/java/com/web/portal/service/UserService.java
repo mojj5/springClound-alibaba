@@ -15,4 +15,8 @@ public interface UserService {
     public String info(@PathVariable("id") int id);
 
 
+    @RequestMapping(value = "/aouth2-test-untitled/info")
+    public String info();
+
+
 }

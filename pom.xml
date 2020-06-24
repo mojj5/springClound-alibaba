@@ -13,6 +13,7 @@
         <module>oauth-center</module>
         <module>web-portal</module>
         <module>business-center</module>
+        <module>register-center</module>
     </modules>
     <packaging>pom</packaging>
 
