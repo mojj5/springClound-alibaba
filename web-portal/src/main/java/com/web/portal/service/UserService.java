@@ -13,4 +13,9 @@ public interface UserService {
 
     @RequestMapping(value = "/oauth-center/oauth/token",method = RequestMethod.POST)
     public Object login( MultiValueMap patientParameter);
+
+    @RequestMapping(value = "/aouth2-test-untitled/info")
+    public Object info();
+
+
 }
