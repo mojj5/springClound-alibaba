@@ -5,6 +5,10 @@
  │  
  ├─api-gateway 【网关】 <br/>
  │  
+ ├─business-center 【业务类微服务】 <br/> 
+ │  │  
+ │  └─user-center 【user中心】<br/> 
+ │    
  ├─inner-intergration 【分布式基础组件】 <br/> 
  │  │  
  │  └─redis-spring-boot-starter 【redis工具】<br/> 
