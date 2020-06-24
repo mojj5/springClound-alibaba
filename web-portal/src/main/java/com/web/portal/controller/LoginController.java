@@ -50,9 +50,9 @@ public class LoginController {
     @RequestMapping("/info")
     public Object info(ModelMap modelMap,HttpSession session){
 
-        Object info = null;
+        String info = null;
         try {
-            info = userService.info();
+            info = userService.info(1);
         } catch (Exception e) {
             e.printStackTrace();
         }

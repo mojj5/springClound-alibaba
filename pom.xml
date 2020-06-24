@@ -12,6 +12,7 @@
         <module>api-gateway</module>
         <module>oauth-center</module>
         <module>web-portal</module>
+        <module>business-center</module>
     </modules>
     <packaging>pom</packaging>
 

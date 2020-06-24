@@ -2,10 +2,7 @@ package com.web.portal.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient("api-gateway")
 public interface UserService {
@@ -14,8 +11,8 @@ public interface UserService {
     @RequestMapping(value = "/oauth-center/oauth/token",method = RequestMethod.POST)
     public Object login( MultiValueMap patientParameter);
 
-    @RequestMapping(value = "/aouth2-test-untitled/info")
-    public Object info();
+    @RequestMapping(value = "/user-center/user/info/{id}")
+    public String info(@PathVariable("id") int id);
 
 
 }
