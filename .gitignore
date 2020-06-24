@@ -3,3 +3,6 @@
 /test-untitled/redis-test-untitled/src/test/
 /derby.log
 /logs/
+*.iml
+*.class
+**/target
