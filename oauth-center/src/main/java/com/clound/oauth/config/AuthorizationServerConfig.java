@@ -3,6 +3,7 @@ package com.clound.oauth.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -12,6 +13,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 @Configuration
@@ -27,6 +34,26 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
     @Autowired
     private UserDetailsService userDetailsService;
 
+
+    /**
+     * 支持授权码模式
+     * @return authorizationCodeServices
+     */
+    @Bean
+    public AuthorizationCodeServices authorizationCodeServices(){
+        return new InMemoryAuthorizationCodeServices();
+    }
+    @Autowired
+    private AuthorizationCodeServices authorizationCodeServices;
+
+
+    @Autowired
+    private TokenStore inMemoryTokenStore;
+    @Autowired
+    private ClientDetailsService clientDetailsService;
+
+
+
     /**
      * 对应于配置AuthorizationServer安全认证的相关信息，创建ClientCredentialsTokenEndpointFilter核心过滤器
      */
@@ -39,7 +66,8 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
         oauthServer
                 .tokenKeyAccess("permitAll()")
                 .allowFormAuthenticationForClients()
-                .checkTokenAccess("isAuthenticated()");
+                .checkTokenAccess("permitAll()");
+//                .checkTokenAccess("isAuthenticated()");
     }
 
     /**
@@ -62,10 +90,20 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
                 .secret("secret")
                 .authorizedGrantTypes("password", "authorization_code", "client_credentials", "implicit", "refresh_token")
                 .scopes("all")
-                .resourceIds("oauth2-resource")
-                .redirectUris("http://www.baidu.com")
-                .accessTokenValiditySeconds(1200)
-                .refreshTokenValiditySeconds(50000);
+                .authorities("all","USER") // 客户端模式设置权限   密码模式会在 userDetailsService设置
+                .resourceIds("user-center").
+
+
+                and()
+                // TODO 授权码模式
+                .withClient("other_id")
+                .secret("other_secret")
+                .authorizedGrantTypes("authorization_code")
+                .scopes("all")
+                .authorities("all")
+                .resourceIds("user-center")
+                .redirectUris("http://www.baidu.com");
+
     }
 
 
@@ -75,9 +113,29 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager)
+        endpoints.authenticationManager(authenticationManager) // 密码
                 .userDetailsService(userDetailsService)
-               .tokenStore(new InMemoryTokenStore());
-
+                .authorizationCodeServices(authorizationCodeServices) //授权码
+               .tokenServices(tokenServices())
+                .allowedTokenEndpointRequestMethods(HttpMethod.POST);
     }
+
+
+    /**
+     * 令牌管理服务
+     * @return
+     */
+    @Bean
+    public AuthorizationServerTokenServices tokenServices(){
+        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+        defaultTokenServices.setClientDetailsService(clientDetailsService);
+        defaultTokenServices.setSupportRefreshToken(true);
+        defaultTokenServices.setTokenStore(inMemoryTokenStore);
+        defaultTokenServices.setAccessTokenValiditySeconds(7200);
+        defaultTokenServices.setRefreshTokenValiditySeconds(259200);
+        return defaultTokenServices;
+    }
+
+
+
 }

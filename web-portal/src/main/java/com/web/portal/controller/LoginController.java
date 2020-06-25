@@ -8,6 +8,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 public class LoginController {
@@ -28,6 +29,7 @@ public class LoginController {
     public  Object login(String user , String password, ModelMap modelMap, HttpSession session){
         LinkedMultiValueMap m = new LinkedMultiValueMap();
         m.add("grant_type","password");
+//        m.add("grant_type","client_credentials");
         m.add("username",user);
         m.add("password",password);
         m.add("scope","all");
@@ -78,6 +80,26 @@ public class LoginController {
         return "info";
     }
 
+    @RequestMapping("/checkToken")
+    @ResponseBody
+    public Object checkToken(ModelMap modelMap,HttpSession session){
+
+        String info = null;
+        try {
+            Object token = session.getAttribute("token");
+
+                Map map = (Map) token;
+                String access_token = (String) map.get("access_token");
+
+            info = userService.checkToken(access_token);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return info;
+    }
 
 }
 

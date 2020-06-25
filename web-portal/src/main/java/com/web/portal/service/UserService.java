@@ -18,5 +18,8 @@ public interface UserService {
     @RequestMapping(value = "/aouth2-test-untitled/info")
     public String info();
 
+   @RequestMapping(value = "/oauth-center/oauth/check_token",method = RequestMethod.GET)
+    public String checkToken( @RequestParam("token")  String token);
+
 
 }

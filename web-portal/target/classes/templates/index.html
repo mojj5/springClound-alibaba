@@ -9,12 +9,13 @@
 <p th:text="${token}"></p>
 <p th:text="${token.access_token}"></p>
 <p th:text="${token.token_type}"></p>
-<p th:text="${token.refresh_token}"></p>
+<!--<p th:text="${token.refresh_token}"></p>-->
 <p th:text="${token.expires_in}"></p>
 <p th:text="${token.scope}"></p>
 
 <a th:href="@{/info}">info</a>
 <a th:href="@{/infos}">info</a>
+<a th:href="@{/checkToken}">info</a>
 
 
 </body>
