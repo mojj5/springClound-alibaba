@@ -15,6 +15,7 @@
         <module>business-center</module>
         <module>register-center</module>
         <module>nacos</module>
+        <module>web-api</module>
     </modules>
     <packaging>pom</packaging>
 
