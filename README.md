@@ -25,4 +25,5 @@
  │     
  └─web-portal 【后台web工程】 <br/> 
         
-## 项目
+## 项目模块
+![Image text](doc/img/framework.png)
