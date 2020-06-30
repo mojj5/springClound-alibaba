@@ -14,6 +14,7 @@
     <description>业务类-微服务</description>
     <modules>
         <module>user-center</module>
+        <module>game-center</module>
     </modules>
 
     <dependencies>
