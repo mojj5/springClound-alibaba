@@ -14,5 +14,6 @@
     <description>分布式基础组件</description>
     <modules>
         <module>redis-spring-boot-starter</module>
+        <module>oauth-client-spring-boot-starter</module>
     </modules>
 </project>

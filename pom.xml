@@ -80,7 +80,11 @@
                 <artifactId>redis-spring-boot-starter</artifactId>
                 <version>${core.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>oauth-client-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

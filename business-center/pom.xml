@@ -21,18 +21,20 @@
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- 选用nacos时打开-->
+
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <groupId>org.example</groupId>
+            <artifactId>oauth-client-spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>redis-spring-boot-starter</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

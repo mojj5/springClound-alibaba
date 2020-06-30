@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.inner.oauth2client.Oauth2ClientAutoConfig,\
+com.inner.oauth2client.config.WebSercurityConfig
