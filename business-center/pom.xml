@@ -17,6 +17,7 @@
         <module>game-center</module>
         <module>account-center</module>
         <module>actordb-center</module>
+        <module>actorlogdb-center</module>
     </modules>
 
     <dependencies>
