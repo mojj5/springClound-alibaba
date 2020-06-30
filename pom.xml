@@ -16,6 +16,7 @@
         <module>register-center</module>
         <module>nacos</module>
         <module>web-api</module>
+        <module>web-vue</module>
     </modules>
     <packaging>pom</packaging>
 
