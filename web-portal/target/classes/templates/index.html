@@ -1,22 +1,70 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>主页</title>
-</head>
-<body>
+	<head>
+		<meta charset="utf-8" />
+		<title>控制台 - Bootstrap后台管理系统模版Ace下载</title>
+		<meta name="keywords" content="Bootstrap模版,Bootstrap模版下载,Boo
 
-<p th:text="${token}"></p>
-<p th:text="${token.access_token}"></p>
-<p th:text="${token.token_type}"></p>
-<!--<p th:text="${token.refresh_token}"></p>-->
-<p th:text="${token.expires_in}"></p>
-<p th:text="${token.scope}"></p>
+		tstrap教程,Bootstrap中文" />
+		<meta name="description" content="站长素材提供Bootstrap模版,Bootstrap教程,Bootstrap中文翻译等相关Bootstrap插件下载" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
 
-<a th:href="@{/info}">info</a>
-<a th:href="@{/infos}">info</a>
-<a th:href="@{/checkToken}">info</a>
+
+		<th:block th:include="common/common::css"></th:block>
+		<!-- inline styles related to this page -->
+
+
+	</head>
+
+	<body>
+
+	    <th:block  th:include="common/navbar::navbar"></th:block>
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="#">
+					<span class="menu-text"></span>
+				</a>
+
+
+				<th:block th:include="common/sidebar::sidebar"></th:block>
+
+				<div id="index_main">
+					<script>
+						$(function () {
+							$("#index_main").load("/main")
+						});
+					</script>
+				</div>
+
+
+			</div><!-- /.main-container-inner -->
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="icon-double-angle-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+
+
+
+		<!-- page specific plugin scripts -->
+
+	<th:block th:include="common/common::script"></th:block>
+
+		<!-- inline scripts related to this page -->
+
 
 
 </body>
 </html>
+
