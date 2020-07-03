@@ -17,6 +17,8 @@
         <module>nacos</module>
         <module>web-api</module>
         <module>web-vue</module>
+        <module>common-model</module>
+        <module>generator-center</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -80,11 +82,20 @@
                 <artifactId>redis-spring-boot-starter</artifactId>
                 <version>${core.version}</version>
             </dependency>
+
+
             <dependency>
                 <groupId>org.example</groupId>
                 <artifactId>oauth-client-spring-boot-starter</artifactId>
                 <version>${core.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>common-model</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

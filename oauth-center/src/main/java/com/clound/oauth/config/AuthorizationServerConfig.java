@@ -91,7 +91,7 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
                 .authorizedGrantTypes("password", "authorization_code", "client_credentials", "implicit", "refresh_token")
                 .scopes("all")
                 .authorities("all","USER") // 客户端模式设置权限   密码模式会在 userDetailsService设置
-                .resourceIds("user-center").
+                .resourceIds("oauth2-resource").
 
 
                 and()
@@ -101,7 +101,7 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
                 .authorizedGrantTypes("authorization_code")
                 .scopes("all")
                 .authorities("all")
-                .resourceIds("user-center")
+                .resourceIds("oauth2-resource")
                 .redirectUris("http://www.baidu.com");
 
     }
