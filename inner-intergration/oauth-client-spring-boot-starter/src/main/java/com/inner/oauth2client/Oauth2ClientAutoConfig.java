@@ -39,8 +39,7 @@ public class Oauth2ClientAutoConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.resourceId(USER_CENTER);
-        resources.stateless(true);
+       super.configure(resources);
     }
 
 }
