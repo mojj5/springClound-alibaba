@@ -49,36 +49,8 @@ public class LoginController {
 
 
 
-    @RequestMapping("/info")
-    public Object info(ModelMap modelMap,HttpSession session){
-
-        String info = null;
-        try {
-            info = userService.info(1);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        modelMap.addAttribute("info",info);
-        return "info";
-    }
 
 
-    @RequestMapping("/infos")
-    public Object infos(ModelMap modelMap,HttpSession session){
-
-        String info = null;
-        try {
-            info = userService.info();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        modelMap.addAttribute("info",info);
-        return "info";
-    }
 
     @RequestMapping("/checkToken")
     @ResponseBody
